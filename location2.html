@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Location Based Access</title>
+    <script>
+        
+        function askLocation() {
+            
+            let location = prompt("Please enter your location (Punjab, Haryana, Chandigarh):");
+
+            
+            location = location ? location.toLowerCase() : null;
+
+            
+            if (location === "punjab" || location === "haryana" || location === "chandigarh") {
+                
+                askCredentials(location);
+            } else {
+                
+                alert("Access Denied");
+            }
+        }
+
+        
+        function askCredentials(location) {
+            
+            let username = prompt("Please enter your username:");
+           
+            let password = prompt("Please enter your password:");
+
+            if (username === "daksh khatri" && password === "password") {
+                
+                redirectToMap(location);
+            } else {
+                
+                alert("Wrong credentials");
+            }
+        }
+
+
+        function redirectToMap(location) {
+            
+            const mapUrls = {
+                punjab: "https://www.google.com/maps/place/Punjab",
+                haryana: "https://www.google.com/maps/place/Haryana",
+                chandigarh: "https://www.google.com/maps/place/Chandigarh"
+            };
+
+            
+            window.location.href = mapUrls[location];
+        }
+
+        
+        window.onload = askLocation;
+    </script>
+</head>
+<body>
+</body>
+</html>
